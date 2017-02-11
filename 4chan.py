@@ -11,7 +11,7 @@ class Downloader:
     def run(self):
         self.verify_boards()
         if len(self.board) == 0:
-            print("No existing boards selected!")
+            print("No existing boards selected, you fucking idiot!")
             sys.exit(2)
         elif self.board[0] == '*':
             self.boards = chanapi.get_all_boards()
@@ -93,49 +93,6 @@ class Downloader:
                 sys.stdout.flush()
             print("")
 
-'''
-def check_if_board_exists(name):
-    boards = chan.get_all_boards()
-    for b in boards:
-        if b.name == name:
-            return True
-    return False
-
-def download_board(board):
-    if not os.path.exists('4chan/{0}'.format(board.name)):
-        os.makedirs("4chan/{0}".format(board.name))
-
-    print("Board name: {0}\nBoard title: {1}\nPage count: {2}\nSafe for work: {3}".format(board.name, board.title, board.page_count, board.is_worksafe))
-    thread_ids = board.get_all_thread_ids()
-    for thread_id in thread_ids:
-        thread = board.get_thread(thread_id)
-        if not os.path.exists("4chan/{0}/{1}".format(board.name, thread_id)):
-            os.makedirs("4chan/{0}/{1}".format(board.name, thread_id))
-        print(" >Thread ID: {0}\n  >Thread topic: {1}".format(thread_id, thread.topic.text_comment[:50].encode('utf-8')))
-        for post in thread.all_posts:
-            if post.has_file:
-                print("   -> Post ID: {0}\n    -> Content: {1}\n    -> File size: {2}".format(post.post_id, post.text_comment[:100].encode('utf-8'), post.file_size))
-                urllib.request.urlretrieve(post.file_url, filename="4chan/{0}/{1}/{2}".format(board.name, thread_id, post.file_url[post.file_url.rindex('/'):]))
-
-def main():
-    sel = input("Enter /shortname/ (without //) of board to download, * to get all, or ? to show the list (or 'fuck' to exit): ")
-    if sel == "?":
-        print(chan.get_all_boards())
-        main()
-    elif sel == "*":
-        boards = chan.get_all_boards()
-        for b in boards:
-            download_board(b)
-    elif sel == "fuck":
-        return
-    else:
-        if check_if_board_exists(sel):
-            download_board(chan.Board(sel))
-        else:
-            print("Select an existing board you dumb fuck")
-            main()
-'''
-
 parser = argparse.ArgumentParser(description="Download pics from your favourite fucking boards (or threads). Enter board names, or one board name and threads ID's.", epilog="op is a faggot")
 parser.add_argument('-d', '--directory', default="4chan", help="directory or path in which pics will be saved (default: 4chan)")
 parser.add_argument('-b', '--board', help="board(s) short name(s) from where pictures will be downloaded (* means all boards, enter multiple with spaces)", nargs='+')
@@ -144,6 +101,6 @@ parser.add_argument('-t', '--thread_id', help="thread ID's from where pics will 
 dl = Downloader()
 args = parser.parse_args(namespace=dl)
 if dl.board == None:
-    print("You must enter at least one board!")
+    print("You must enter at least one board, faggot!")
     sys.exit(1)
 dl.run()
