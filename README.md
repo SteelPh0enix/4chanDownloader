@@ -6,7 +6,7 @@ Simple command-line tool for downloading pics from 4chan boards/threads.
 - and requests library: http://docs.python-requests.org/en/master/ (pip install requests)
 
 ## Usage:
-'python 4chan.py [-d directory (default: 4chan)] [-b board(s)] [-t thread(s)]`
+`python 4chan.py [-d directory (default: 4chan)] [-b board(s)] [-t thread(s)]`
 
 ### Examples:
 Download fucking everything to default directory:
