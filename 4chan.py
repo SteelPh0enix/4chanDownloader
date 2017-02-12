@@ -4,7 +4,8 @@ import argparse
 import sys
 import os
 
-class Downloader:
+
+class FourchanDownloader:
     def __init__(self):
         self.boards_list = chanapi.get_all_boards()
 
@@ -99,7 +100,7 @@ def main():
     parser.add_argument('-b', '--board', help="board(s) short name(s) from where pictures will be downloaded (* means all boards, enter multiple with spaces)", nargs='+')
     parser.add_argument('-t', '--thread_id', help="thread ID's from where pics will be downloaded (you can enter multiple with spaces)", nargs='+')
 
-    dl = Downloader()
+    dl = FourchanDownloader()
     args = parser.parse_args(namespace=dl)
     if dl.board == None:
         print("You must enter at least one board, faggot!")
