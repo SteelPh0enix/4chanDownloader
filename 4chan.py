@@ -93,14 +93,18 @@ class Downloader:
                 sys.stdout.flush()
             print("")
 
-parser = argparse.ArgumentParser(description="Download pics from your favourite fucking boards (or threads). Enter board names, or one board name and threads ID's.", epilog="op is a faggot")
-parser.add_argument('-d', '--directory', default="4chan", help="directory or path in which pics will be saved (default: 4chan)")
-parser.add_argument('-b', '--board', help="board(s) short name(s) from where pictures will be downloaded (* means all boards, enter multiple with spaces)", nargs='+')
-parser.add_argument('-t', '--thread_id', help="thread ID's from where pics will be downloaded (you can enter multiple with spaces)", nargs='+')
+def main():
+    parser = argparse.ArgumentParser(description="Download pics from your favourite fucking boards (or threads). Enter board names, or one board name and threads ID's.", epilog="op is a faggot")
+    parser.add_argument('-d', '--directory', default="4chan", help="directory or path in which pics will be saved (default: 4chan)")
+    parser.add_argument('-b', '--board', help="board(s) short name(s) from where pictures will be downloaded (* means all boards, enter multiple with spaces)", nargs='+')
+    parser.add_argument('-t', '--thread_id', help="thread ID's from where pics will be downloaded (you can enter multiple with spaces)", nargs='+')
 
-dl = Downloader()
-args = parser.parse_args(namespace=dl)
-if dl.board == None:
-    print("You must enter at least one board, faggot!")
-    sys.exit(1)
-dl.run()
+    dl = Downloader()
+    args = parser.parse_args(namespace=dl)
+    if dl.board == None:
+        print("You must enter at least one board, faggot!")
+        sys.exit(1)
+    dl.run()
+
+if __name__ == "__main__":
+    main()
